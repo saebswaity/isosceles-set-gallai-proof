@@ -1,0 +1,237 @@
+\documentclass[12pt]{amsart}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{observation}[theorem]{Observation}
+
+\title{Uniqueness and Maximality of the Planar 6-Point Isosceles Set:\\A Proof via Gallai Colorings}
+
+\author{Collaborative Work}
+\address{Investigation directed by Saeb Swaity (Hebron, Palestine).
+Proof assembled through AI collaboration: Claude (Anthropic), Gemini (Google), ChatGPT (OpenAI). March 2026.}
+
+\date{\today}
+
+\begin{document}
+
+\begin{abstract}
+We prove that the unique 6-point isosceles set in the Euclidean plane~$\mathbb{R}^2$ (up to similarity and isometry) is the vertex set of a regular pentagon together with its center, and that no 7-point isosceles set exists---so six is the maximum. Our method differs from Kelly's original proof (1947, direct case analysis) and Kov\'acs's recent proof (2024, algebraic geometry elimination). We reformulate the problem as a Gallai coloring of the complete graph~$K_n$, then eliminate all possible Gallai partition types using elementary Euclidean geometry---primarily the fact that two distinct circles intersect in at most two points.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+In 1946, Erd\H{o}s posed the problem of finding the largest subset of the Euclidean plane in which every triple of points forms an isosceles triangle. He observed that six points can be so arranged. In 1947, Kelly~\cite{ErKe47} proved that the unique such configuration (up to similarity) is the set of five vertices of a regular pentagon together with its center. An alternative proof using algebraic geometry elimination was given by Kov\'acs~\cite{Ko24} in 2024.
+
+We present a third proof using a different technique: we translate the isosceles condition into a rainbow-triangle-free edge-coloring of the complete graph~$K_n$, invoke Gallai's structural theorem to reduce the problem to finitely many partition types, and eliminate each partition type using elementary circle intersection arguments in~$\mathbb{R}^2$. As a corollary, we prove that no 7-point isosceles set exists, confirming that 6 is the maximum cardinality.
+
+\section{Definitions and Prerequisites}
+
+\begin{definition}
+A finite set $S \subset \mathbb{R}^2$ is called an \emph{isosceles set} if for every 3-element subset $\{P, Q, R\} \subseteq S$, the multiset $\{d(P,Q),\, d(Q,R),\, d(P,R)\}$ contains at most two distinct values.
+\end{definition}
+
+We rely on three known results.
+
+\begin{theorem}[Gallai~\cite{Ga67}; Gy\'arf\'as--Simonyi~\cite{GS04}]\label{thm:gallai}
+Let $K_n$ be a complete graph whose edges are colored such that no triangle receives three distinct colors. Then there exists a nontrivial partition $V = V_1 \cup V_2 \cup \cdots \cup V_k$ $(k \geq 2)$ such that:
+\begin{enumerate}
+\item For every pair $(V_i, V_j)$ with $i \neq j$, all edges between $V_i$ and $V_j$ have the same color.
+\item Across all pairs $i \neq j$, at most two colors appear.
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Kelly~\cite{ErKe47}; Einhorn--Schoenberg~\cite{ES66}]\label{thm:twodist}
+The maximum cardinality of a subset of\/ $\mathbb{R}^2$ with exactly two distinct pairwise distances is~$5$. Moreover, any such $5$-point set is similar to the vertex set of a regular pentagon.
+\end{theorem}
+
+\begin{lemma}\label{lem:circles}
+Two distinct circles in\/ $\mathbb{R}^2$ intersect in at most $2$ points. A line and a circle in\/ $\mathbb{R}^2$ intersect in at most $2$ points.
+\end{lemma}
+
+\section{Main Result}
+
+\begin{theorem}\label{thm:main}
+The unique isosceles set in\/ $\mathbb{R}^2$ of cardinality~$6$, up to similarity and isometry, consists of the five vertices of a regular pentagon and its center.
+\end{theorem}
+
+\begin{proof}
+We proceed in five steps.
+
+\medskip
+\noindent\textbf{Step 1.} \emph{A $6$-point isosceles set in\/ $\mathbb{R}^2$ determines at least $3$ distinct distances.}
+
+\smallskip
+By Theorem~\ref{thm:twodist}, any subset of $\mathbb{R}^2$ with exactly two distinct pairwise distances has at most 5~points. Therefore a 6-point set must determine at least 3 distinct distances.
+
+\medskip
+\noindent\textbf{Step 2.} \emph{The distance coloring of\/ $K_6$ is a Gallai coloring.}
+
+\smallskip
+Let $S = \{P_1, \ldots, P_6\}$ be a 6-point isosceles set. Color each edge $P_iP_j$ of $K_6$ by the value $d(P_i, P_j)$. By Step~1, at least 3 colors are used. The isosceles condition implies that no triangle has 3 distinct edge-colors (i.e., no rainbow triangle), so this is a Gallai coloring.
+
+\medskip
+\noindent\textbf{Step 3.} \emph{The only geometrically realizable Gallai partition in\/ $\mathbb{R}^2$ has the form $5+1$.}
+
+\smallskip
+By Theorem~\ref{thm:gallai}, there exists a nontrivial Gallai partition of the 6~vertices. We enumerate all partition types and show that each, except $5+1$, is impossible in~$\mathbb{R}^2$.
+
+\smallskip
+\emph{Case $4+2$.} Let $V_1 = \{A,B,C,D\}$ and $V_2 = \{E,F\}$. All edges between $V_1$ and $V_2$ have the same distance~$r$. Since $E \neq F$, the points $A,B,C,D$ lie on two distinct circles of radius~$r$ (centered at $E$ and~$F$ respectively). By Lemma~\ref{lem:circles}, these share at most 2~points. But $|V_1| = 4$. Contradiction.
+
+\smallskip
+\emph{Case $3+3$.} Let $V_1 = \{A,B,C\}$ and $V_2 = \{D,E,F\}$. All between-group edges have distance~$r$. The points $A,B,C$ lie on three circles of radius~$r$ centered at $D,E,F$. Whether these centers are collinear or not, three circles share at most 2~common points. But $|V_1| = 3$. Contradiction.
+
+\smallskip
+\emph{Case $3+2+1$.} The group of size~3 is equidistant from both points in the group of size~2. Thus 3~points lie on 2~distinct circles, which share at most 2~points. Contradiction.
+
+\smallskip
+\emph{Case $4+1+1$.} Let $G = \{A,B,C,D\}$, $\{P\}$, $\{Q\}$. The 4~points of~$G$ lie on circles centered at~$P$ and~$Q$. Since $P \neq Q$, two distinct circles share at most 2~points. But $|G| = 4$. Contradiction.
+
+\smallskip
+\emph{Case $2+2+2$.} Let $V_1 = \{A,B\}$, $V_2 = \{C,D\}$, $V_3 = \{E,F\}$. By property~(2) of Theorem~\ref{thm:gallai}, at most 2~colors appear on between-group edges. By pigeonhole, two of the three group-pairs share the same color~$r$. Without loss of generality, all edges from $V_1$ to $V_2$ and from $V_1$ to $V_3$ have distance~$r$. Then $C,D,E,F$ all lie on two distinct circles (centered at $A$ and $B$), sharing at most 2~points. But we need 4. Contradiction.
+
+\smallskip
+\emph{Case $3+1+1+1$.} Let $G = \{A,B,C\}$ and $\{P\}, \{Q\}, \{R\}$ singletons. The 3~points of~$G$ lie on circles centered at $P$, $Q$, $R$. Three circles share at most 2~common points. But $|G| = 3$. Contradiction.
+
+\smallskip
+\emph{Case $2+2+1+1$.} Let the groups be $\{A,B\}$, $\{C,D\}$, $\{P\}$, $\{Q\}$. By property~(1):
+\[
+d(A,C) = d(A,D) = d(B,C) = d(B,D).
+\]
+Thus $A$ is equidistant from $C$ and $D$, so $A$ lies on the perpendicular bisector~$L$ of segment~$CD$. Similarly, $B$ lies on~$L$. Since $P$ and $Q$ are each equidistant from $A$ and $B$ and from $C$ and $D$, they lie on the perpendicular bisector of~$AB$ and of~$CD$. Since $P \neq Q$, these bisectors coincide, so $L$ is also the perpendicular bisector of~$AB$. But $A$ and $B$ both lie on~$L$, the perpendicular bisector of their own segment. No endpoint of a nondegenerate segment lies on its perpendicular bisector, so $A = B$. This contradicts distinctness. Contradiction.
+
+\smallskip
+\emph{Case $2+1+1+1+1$.} Let $\{A,B\}$ be the size-2 group. Each singleton is equidistant from $A$ and $B$, so all four singletons lie on the perpendicular bisector of~$AB$. Thus 4~distinct points are collinear. By property~(2), at most 2~colors appear on between-group edges, so these 4~collinear points determine at most 2~distinct pairwise distances.
+
+Order them as $x_1 < x_2 < x_3 < x_4$. Let the two distance values be $a < b$. The maximum distance $x_4 - x_1 = b$. The adjacent gaps $x_2 - x_1$, $x_3 - x_2$, $x_4 - x_3$ must each equal~$a$ (being strictly less than~$b$). Then $x_3 - x_1 = 2a$. For only 2 distances, $2a \in \{a, b\}$. If $2a = a$, then $a = 0$, contradicting distinctness. If $2a = b$, then $x_4 - x_1 = 3a \neq b = 2a$, a contradiction. Thus 4~distinct collinear points cannot have $\leq 2$ pairwise distances. Contradiction.
+
+\smallskip
+\emph{Case $1+1+1+1+1+1$.} All edges are between-group, so by property~(2), at most 2~colors appear. This gives $\leq 2$ distinct distances, contradicting Step~1.
+
+\smallskip
+The only surviving partition is $5+1$. Let $\{P\}$ be the singleton and $G = \{Q_1, \ldots, Q_5\}$. By property~(1), $d(P, Q_i) = r$ for all~$i$. Thus $P$ is equidistant from all 5~other points.
+
+\medskip
+\noindent\textbf{Step 4.} \emph{The $5$ remaining points form a regular pentagon.}
+
+\smallskip
+From Step~3, $Q_1, \ldots, Q_5$ lie on a circle~$\mathcal{C}$ of radius~$r$ centered at~$P$. The full configuration has $\geq 3$ distinct distances (Step~1), one of which is~$r$. Therefore $Q_1, \ldots, Q_5$ determine $\geq 2$ pairwise distances among themselves.
+
+We claim they determine exactly~2. Suppose for contradiction they determine $k \geq 3$ distances. The isosceles condition still applies to all triples among $\{Q_1, \ldots, Q_5\}$, so their distance coloring on~$K_5$ is a Gallai coloring with $k \geq 3$ colors. By Theorem~\ref{thm:gallai}, a nontrivial Gallai partition of $\{Q_1, \ldots, Q_5\}$ exists. We eliminate all partition types using the constraint that all 5~points lie on~$\mathcal{C}$.
+
+\smallskip
+\emph{Partitions with a group of size $\geq 3$ (cases $4+1$, $3+2$, $3+1+1$).} The $\geq 3$ points in the large group are equidistant from some point in another group. Those $\geq 3$ points lie on $\mathcal{C}$ and on a second circle centered at that point. Two distinct circles share at most 2~points. Contradiction.
+
+\smallskip
+\emph{Case $2+2+1$.} Let the groups be $\{A,B\}$, $\{C,D\}$, $\{E\}$. By property~(2), at most 2~colors appear on between-group edges. There are 3~group-pairs; by pigeonhole, 2~pairs share the same color~$r$. If $(\{A,B\}, \{E\})$ and $(\{C,D\}, \{E\})$ share color~$r$, then $A,B,C,D$ are all at distance~$r$ from~$E$---giving 4~points on $\mathcal{C}$ and on a circle centered at~$E$; two distinct circles share at most 2~points, but we need~4. Contradiction. If $(\{A,B\}, \{C,D\})$ and $(\{A,B\}, \{E\})$ share color~$r$, then $C,D,E$ are each at distance~$r$ from both $A$ and~$B$, so they lie on 2~distinct circles (centered at $A$ and $B$) sharing at most 2~points; but we need~3. Contradiction.
+
+\smallskip
+\emph{Case $2+1+1+1$.} Let $\{A,B\}$ be the pair. Each singleton is equidistant from $A$ and $B$, so the 3~singletons lie on the perpendicular bisector of~$AB$. But they also lie on~$\mathcal{C}$. A line and a circle share at most 2~points; we need~3. Contradiction.
+
+\smallskip
+\emph{Case $1+1+1+1+1$.} All edges are between-group, so at most 2~colors appear, giving $k \leq 2$. This contradicts $k \geq 3$.
+
+\smallskip
+All partitions are impossible. Therefore $Q_1, \ldots, Q_5$ determine exactly 2 pairwise distances. By Theorem~\ref{thm:twodist}, they form a regular pentagon.
+
+\medskip
+\noindent\textbf{Step 5.} \emph{Verification.}
+
+\smallskip
+The regular pentagon with vertices $Q_1, \ldots, Q_5$ has two pairwise distances: side~$s$ and diagonal $d = \varphi s$, where $\varphi = (1+\sqrt{5})/2$ is the golden ratio. The center~$P$ satisfies $d(P, Q_i) = r$ for all~$i$. The set of all pairwise distances is $\{s, d, r\}$, confirming $\geq 3$ distinct distances.
+
+For triples of 3~vertices: distances are drawn from $\{s, d\}$; with 3~distances from 2~values, at least 2~coincide. Every such triple is isosceles.
+
+For triples containing~$P$ and 2~vertices: distances are $(r, r, x)$ where $x \in \{s, d\}$. Isosceles.
+
+All $\binom{6}{3} = 20$ triples are isosceles. The configuration is an isosceles set, and by the preceding argument, it is the unique one (up to similarity and isometry).
+\end{proof}
+
+\section{Maximality}
+
+\begin{observation}[Monotonicity of partition impossibility]\label{obs:mono}
+If a Gallai partition type is geometrically impossible in\/ $\mathbb{R}^2$, then any partition obtained by enlarging a group or adding a new group is also impossible, since the original geometric constraints remain present and additional constraints can only be more restrictive.
+\end{observation}
+
+\begin{corollary}\label{cor:max6}
+There does not exist a $7$-point isosceles set in\/ $\mathbb{R}^2$. Consequently, the maximum cardinality of a planar isosceles set is~$6$.
+\end{corollary}
+
+\begin{proof}
+Suppose for contradiction that a $7$-point isosceles set~$S$ exists. As in the proof of Theorem~\ref{thm:main}, at least $3$ distinct distances occur, so the distance coloring of~$K_7$ is a Gallai coloring with $\geq 3$ colors.
+
+By Observation~\ref{obs:mono}, every partition type ruled out in Step~3 of Theorem~\ref{thm:main} remains impossible when points or groups are added. Every partition of~$7$ into groups of which at least one has size $\geq 3$ contains, as a sub-pattern, one of the impossible partitions $3{+}2$, $3{+}1{+}1$, $4{+}2$, or $4{+}1{+}1$---except for the single case $6{+}1$. Likewise, every partition into groups of size $\leq 2$ contains one of the impossible partitions $2{+}2{+}2$, $2{+}2{+}1{+}1$, $2{+}1{+}1{+}1{+}1$, or $1{+}1{+}1{+}1{+}1{+}1$. All such partitions are therefore impossible.
+
+The sole remaining case is $6{+}1$: a singleton~$P$ with all edges to the remaining $6$~points having the same distance~$r$. Then these $6$~points lie on a circle~$\mathcal{C}$ of radius~$r$ centered at~$P$ and, being a subset of the isosceles set~$S$, themselves form a $6$-point isosceles set. By Theorem~\ref{thm:main}, they must be the vertices of a regular pentagon together with its center~$O$. The five pentagon vertices lie on the circumcircle centered at~$O$, while all six points lie on~$\mathcal{C}$ centered at~$P$. Five points shared by these two circles force the circles to coincide, hence $P = O$. But $O$ is one of the six points in the group, while $P$ is the singleton outside the group. This contradicts $P \notin \{Q_1, \ldots, Q_5, O\}$.
+
+Since no Gallai partition of~$7$ points is realizable, no $7$-point planar isosceles set exists.
+\end{proof}
+
+\section{Remarks}
+
+\begin{remark}
+Kelly's proof~\cite{ErKe47} proceeds by direct case analysis on edge lengths: it labels distances from a vertex and systematically tracks which equalities are forced, eventually arriving at a contradiction or the pentagon configuration. Kov\'acs's proof~\cite{Ko24} uses Gr\"obner basis computations and elimination ideals. The present proof operates at a higher structural level: Gallai's theorem reduces the problem to finitely many partition types, each eliminated by elementary Euclidean geometry.
+\end{remark}
+
+\begin{remark}
+The golden ratio $\varphi = (1+\sqrt{5})/2$ is forced by Ptolemy's theorem applied to cyclic quadrilaterals inscribed in the pentagon's circumcircle: for four consecutive pentagon vertices, Ptolemy gives $s^2 + sd = d^2$, yielding $d/s = \varphi$.
+\end{remark}
+
+\begin{remark}
+The Gallai coloring framework is dimension-independent. In higher dimensions, Lemma~\ref{lem:circles} is replaced by the corresponding intersection properties of spheres, and the Cayley--Menger determinant provides embeddability constraints. This suggests a uniform approach to classifying maximal isosceles sets in~$\mathbb{R}^d$, though we do not pursue this here.
+\end{remark}
+
+\begin{remark}
+The monotonicity principle (Observation~\ref{obs:mono}) provides a systematic method for extending impossibility results: once a partition type is ruled out at some level~$n$, all descendant partitions obtained by enlarging groups or adding new groups are automatically impossible at every level~$n' > n$. For $n = 7$, this reduces the case analysis to a single new partition type ($6{+}1$).
+\end{remark}
+
+\section*{Acknowledgments}
+
+This proof was constructed through a human--AI collaborative session directed by Saeb Swaity (Hebron, Palestine), who coordinated the collaboration, guided the structural investigation, proposed the monotonicity principle (Observation~\ref{obs:mono}) and the partition pruning framework used in the maximality argument. Gemini (Google) introduced the key idea of applying the Gallai coloring theorem to the isosceles set problem. Claude (Anthropic) and ChatGPT (OpenAI) contributed verification, computation, and corrections to refine and complete the proof. The result itself is classical; the contribution, if any, lies in the proof method.
+
+\begin{thebibliography}{99}
+
+\bibitem{ErKe47}
+P.~Erd\H{o}s and L.\,M.~Kelly,
+\emph{Elementary Problems and Solutions: E735},
+Amer.\ Math.\ Monthly \textbf{54} (1947), no.~4, 227--229.
+
+\bibitem{Ko24}
+Z.~Kov\'acs,
+\emph{A note on Erd\H{o}s's mysterious remark},
+arXiv:2412.05190, December 2024.
+
+\bibitem{Ga67}
+T.~Gallai,
+\emph{Transitiv orientierbare Graphen},
+Acta Math.\ Acad.\ Sci.\ Hungar.\ \textbf{18} (1967), 25--66.
+
+\bibitem{GS04}
+A.~Gy\'arf\'as and G.~Simonyi,
+\emph{Edge colorings of complete graphs without tricolored triangles},
+J.~Graph Theory \textbf{46} (2004), no.~3, 211--216.
+
+\bibitem{ES66}
+S.\,J.~Einhorn and I.\,J.~Schoenberg,
+\emph{On Euclidean sets having only two distances between points},
+Indag.\ Math.\ \textbf{28} (1966), 479--488.
+
+\bibitem{Bl84}
+A.~Blokhuis,
+\emph{Few-distance sets},
+CWI Tract~7, Mathematisch Centrum, Amsterdam, 1984.
+
+\end{thebibliography}
+
+\end{document}
